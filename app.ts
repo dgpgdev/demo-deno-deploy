@@ -2,7 +2,7 @@ import { Hono } from '@hono/hono'
 
 const app = new Hono()
 
-app.get('/quest', async (c) => {
+app.get('/quest', (c) => {
   const name = c.req.query('name')
   const msg = `Choisis ta quête ${name ?? 'aventurier'}`
   return c.json({
@@ -15,7 +15,7 @@ app.get('/quest', async (c) => {
   })
 })
 
-app.get('/:name?', async (c) => {
+app.get('/:name?', (c) => {
   const name = c.req.param('name') ?? 'aventurier'
   return c.text(`Bien le bonjour ${name}`)
 })
